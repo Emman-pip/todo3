@@ -185,6 +185,10 @@ function posttoDisplay(content, name, today) {
         removeItem(content, div);
         radioRemove(arrayofTasks[i], name);
       };
+
+      title.onclick = () => {
+        showDesc(div2, JSON.parse(localStorage.getItem("storage"))[i], name);
+      };
     }
   } else if (name == "Today") {
     content.innerHTML = "";
@@ -213,7 +217,11 @@ function posttoDisplay(content, name, today) {
 
         radio.onclick = () => {
           removeItem(content, div);
-          radioRemove(arrayofTasks[i], name);
+          radioRemove(arrayofTasks[i]);
+        };
+
+        title.onclick = () => {
+          showDesc(div2, JSON.parse(localStorage.getItem("storage"))[i], name);
         };
       }
     }
@@ -242,8 +250,51 @@ function posttoDisplay(content, name, today) {
         removeItem(content, div);
         radioRemove(arrayofTasks[i], name);
       };
+
+      title.onclick = () => {
+        console.log(name);
+        showDesc(div2, JSON.parse(localStorage.getItem("storage"))[i], name);
+      };
     }
   }
+}
+
+function showDesc(div, item, name) {
+  name = "storage";
+  const data = document.createElement("div");
+  data.classList.add("descc");
+  div.appendChild(data);
+
+  const desc = document.createElement("textarea");
+  desc.cols = "30";
+  desc.rows = "10";
+  desc.value = item.description;
+
+  data.appendChild(desc);
+  const array = [];
+
+  desc.addEventListener("keyup", () => {
+    const temp = JSON.parse(localStorage.getItem("storage"));
+    for (let i = 0; i < temp.length; i++) {
+      array.push(JSON.stringify(temp[i]));
+    }
+    const descript = array.indexOf(JSON.stringify(item));
+    const lol = JSON.parse(localStorage.getItem("storage"));
+    const set = lol[descript];
+    console.log(set);
+    set.description = desc.value;
+    localStorage.setItem("storage", JSON.stringify(lol));
+
+    const temp1 = JSON.parse(localStorage.getItem(name));
+    for (let i = 0; i < temp1.length; i++) {
+      array.push(JSON.stringify(temp1[i]));
+    }
+    const descript1 = array.indexOf(JSON.stringify(item));
+    const lol1 = JSON.parse(localStorage.getItem(name));
+    const set1 = lol[descript1];
+    set1.description = desc1.value;
+    localStorage.setItem(name, JSON.stringify(lol1));
+  });
 }
 
 function radioRemove(item, name) {
@@ -263,7 +314,6 @@ function radioRemove(item, name) {
     arrayofAll2.splice(arrayofAll2.indexOf(JSON.stringify(item)), 1);
     const final2 = [];
     arrayofAll2.forEach((element) => final2.push(JSON.parse(element)));
-    console.log(final2);
     localStorage.setItem(name, JSON.stringify(final2));
   }
 }
