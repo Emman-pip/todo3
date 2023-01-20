@@ -1,0 +1,164 @@
+@import url("https://fontlibrary.org//face/cooper-hewitt");
+* {
+  font-family: "CooperHewittSemiboldItalic";
+  font-weight: normal;
+  font-style: normal;
+  margin: 0;
+  box-sizing: border-box;
+  --sky-blue-color: rgba(128, 128, 128, 0.538) /*#1ecae1cc*/;
+  --blue-color: rgb(187, 187, 187) /*#1e6ae1*/;
+  --greenish-color: rgb(84, 84, 84) /*#1ee196*/;
+}
+
+/* structure */
+.topBar {
+  font-size: 4rem;
+  background-color: var(--greenish-color);
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.main {
+  display: flex;
+  height: 100vh;
+  min-width: 89vw;
+}
+
+.sidebar {
+  background-color: var(--sky-blue-color);
+  width: 30vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 0.3rem;
+  backdrop-filter: blur(1rem);
+}
+
+.screen {
+  padding: 1rem;
+  margin: 0.5rem;
+  width: 100%;
+  background-color: rgba(186, 186, 186, 0.54);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.topScreen {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  margin-top: 0;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: var(--blue-color);
+}
+
+/* appearing screens */
+@keyframes slidedown {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.appear {
+  position: fixed;
+  padding: 1rem;
+  width: 30vw;
+  top: 10px;
+  right: 10px;
+  background-color: var(--blue-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  animation-name: slidedown;
+  animation-duration: 1s;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.appProject {
+  position: fixed;
+  top: 6rem;
+  left: 0;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--blue-color);
+  padding: 1rem;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  outline: 1px solid black;
+  animation-name: slideRight;
+  animation-duration: 1s;
+}
+
+/* for lines of task*/
+
+.line2 {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--blue-color);
+  height: auto;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.x {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexed {
+  display: flex;
+}
+
+.addProject {
+  height: 2rem;
+  background-color: var(--greenish-color);
+  border-radius: 30px;
+}
+
+.addTask {
+  height: 1.5rem;
+  background-color: var(--greenish-color);
+  border-radius: 5px;
+}
+
+:root {
+  background: url("https://source.unsplash.com/random/") no-repeat center center;
+  background-size: cover;
+}
+
+.change {
+  border-radius: 6px;
+  padding: 0.2rem;
+  background-color: var(--greenish-color);
+}
+
+.x {
+  border-radius: 10px;
+  background-color: transparent;
+}
