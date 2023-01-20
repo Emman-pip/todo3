@@ -187,7 +187,14 @@ function posttoDisplay(content, name, today) {
       };
 
       title.onclick = () => {
-        showDesc(div2, JSON.parse(localStorage.getItem("storage"))[i], name);
+        if (
+          div2.innerHTML == `<input type="radio"><p>${title.textContent}</p>`
+        ) {
+          showDesc(div2, JSON.parse(localStorage.getItem("storage"))[i], name);
+        } else {
+          document.body.innerHTML = "";
+          structure(name);
+        }
       };
     }
   } else if (name == "Today") {
@@ -221,7 +228,18 @@ function posttoDisplay(content, name, today) {
         };
 
         title.onclick = () => {
-          showDesc(div2, JSON.parse(localStorage.getItem("storage"))[i], name);
+          if (
+            div2.innerHTML == `<input type="radio"><p>${title.textContent}</p>`
+          ) {
+            showDesc(
+              div2,
+              JSON.parse(localStorage.getItem("storage"))[i],
+              name
+            );
+          } else {
+            document.body.innerHTML = "";
+            structure(name);
+          }
         };
       }
     }
@@ -250,10 +268,15 @@ function posttoDisplay(content, name, today) {
         removeItem(content, div);
         radioRemove(arrayofTasks[i], name);
       };
-
       title.onclick = () => {
-        console.log(name);
-        showDesc(div2, JSON.parse(localStorage.getItem("storage"))[i], name);
+        if (
+          div2.innerHTML == `<input type="radio"><p>${title.textContent}</p>`
+        ) {
+          showDesc(div2, JSON.parse(localStorage.getItem("storage"))[i], name);
+        } else {
+          document.body.innerHTML = "";
+          structure(name);
+        }
       };
     }
   }
@@ -292,7 +315,7 @@ function showDesc(div, item, name) {
     const descript1 = array.indexOf(JSON.stringify(item));
     const lol1 = JSON.parse(localStorage.getItem(name));
     const set1 = lol[descript1];
-    set1.description = desc1.value;
+    set1.description = desc.value;
     localStorage.setItem(name, JSON.stringify(lol1));
   });
 }
