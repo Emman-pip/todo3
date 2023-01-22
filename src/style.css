@@ -178,6 +178,7 @@
   width: auto;
   border-radius: 100rem;
   background-color: var(--blue-color);
+  border: 10px black dashed;
 }
 
 .icons {
