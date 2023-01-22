@@ -1,3 +1,6 @@
+import Home from "./home.svg";
+import sun from "./weather-sunny.svg";
+import add from "./plus-circle-outline.svg";
 import _ from "lodash";
 import "./style.css";
 import { format, isEqual, parseISO } from "date-fns";
@@ -24,7 +27,13 @@ const structure = (name = "General Tasks") => {
   document.body.appendChild(topBar);
 
   topBar.textContent = "TodoList.io";
+  topBar.style.color = "whitesmoke";
   topBar.classList.add("topBar");
+
+  const signUp = document.createElement("button");
+  signUp.textContent = "Sign Up";
+  signUp.classList.add("up");
+  topBar.appendChild(signUp);
 
   const main = document.createElement("div");
   document.body.appendChild(main);
@@ -34,20 +43,47 @@ const structure = (name = "General Tasks") => {
   sidebar.classList.add("sidebar");
   main.appendChild(sidebar);
 
+  const div1 = document.createElement("div");
+  div1.classList.add("icons");
+  sidebar.appendChild(div1);
+
+  /*
   const all = document.createElement("button");
   all.textContent = "General Tasks";
   all.classList.add("addProject");
   sidebar.appendChild(all);
+  */
+  const all = new Image();
+  all.classList.add("image");
+  all.classList.add("image1");
+  all.src = Home;
+  div1.appendChild(all);
 
+  /*
   const today = document.createElement("button");
   today.textContent = "Today";
   today.classList.add("addProject");
   sidebar.appendChild(today);
+  */
 
+  const today = new Image();
+  today.classList.add("image");
+  all.classList.add("image2");
+  today.src = sun;
+  div1.appendChild(today);
+
+  /*
   const addProject = document.createElement("button");
   addProject.textContent = "add project";
   addProject.classList.add("addProject");
   sidebar.appendChild(addProject);
+  */
+
+  const addProject = new Image();
+  addProject.classList.add("image");
+  addProject.classList.add("image3");
+  addProject.src = add;
+  div1.appendChild(addProject);
 
   const projects = document.createElement("div");
   addProject.classList.add("projects");
@@ -69,7 +105,7 @@ const structure = (name = "General Tasks") => {
   text.textContent = name;
 
   const addTask = document.createElement("button");
-  addTask.textContent = "+Add";
+  addTask.textContent = "+ Add";
   addTask.classList.add("addTask");
 
   topScreen.appendChild(addTask);
@@ -304,7 +340,6 @@ function showDesc(div, item, name) {
     const descript = array.indexOf(JSON.stringify(item));
     const lol = JSON.parse(localStorage.getItem("storage"));
     const set = lol[descript];
-    console.log(set);
     set.description = desc.value;
     localStorage.setItem("storage", JSON.stringify(lol));
 
@@ -313,10 +348,9 @@ function showDesc(div, item, name) {
       array.push(JSON.stringify(temp1[i]));
     }
     const descript1 = array.indexOf(JSON.stringify(item));
-    const lol1 = JSON.parse(localStorage.getItem(name));
     const set1 = lol[descript1];
     set1.description = desc.value;
-    localStorage.setItem(name, JSON.stringify(lol1));
+    localStorage.setItem(name, JSON.stringify(lol));
   });
 }
 
@@ -397,8 +431,17 @@ function displayProjects(div) {
     title.innerHTML = JSON.parse(localStorage.getItem("storage2"))[i].name;
     title.style.width = "90%";
     title.classList.add("change");
+    title.style.color = "whitesmoke";
     div2.appendChild(title);
 
+    /*
+    const picname = JSON.parse(localStorage.getItem("storage2"))[i].name;
+
+    const title = new Image();
+    title.classList.add("image");
+    today.src = `https://source.unsplash.com/random/?${picname}`;
+    sidebar.appendChild(today);
+    */
     const x = document.createElement("div");
     x.textContent = "❌";
     x.classList.add("x");

@@ -18,6 +18,8 @@
   display: flex;
   align-items: center;
   padding: 1rem;
+  display: flex;
+  justify-content: space-around;
 }
 
 .main {
@@ -135,6 +137,7 @@
 
 .flexed {
   display: flex;
+  gap: 0.3rem;
 }
 
 .addProject {
@@ -147,6 +150,11 @@
   height: 1.5rem;
   background-color: var(--greenish-color);
   border-radius: 5px;
+  color: whitesmoke;
+}
+
+.addTask:hover {
+  filter: invert(100%);
 }
 
 :root {
@@ -163,4 +171,42 @@
 .x {
   border-radius: 10px;
   background-color: transparent;
+}
+
+.image {
+  height: 5vw;
+  width: auto;
+  border-radius: 100rem;
+  background-color: var(--blue-color);
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.image:hover {
+  filter: invert(100%);
+}
+
+.change {
+  cursor: pointer;
+}
+
+.change:hover {
+  filter: invert(100%);
+}
+
+.up {
+  width: 20vw;
+  height: auto;
+  padding: 0.5rem;
+  color: whitesmoke;
+  background-color: var(--sky-blue-color);
+}
+
+.up:hover {
+  filter: invert(100%);
 }
